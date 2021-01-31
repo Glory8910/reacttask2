@@ -1,24 +1,41 @@
 import logo from './logo.svg';
 import './App.css';
+import Sidebar from './sidebar/sidebar';
+import Topbar from './topbar/topbar';
+import Heading from './heading/heading';
+import Cards from "./cards/cards"
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import Dashboard from './dashboardcomp/dashboard'
+import Report from "./reports/reports";
+
+
+
+
+
 
 function App() {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div id="wrapper">
+        <Sidebar />
+        <div id="content-wrapper" className="d-flex flex-column">
+          <div id="content">
+            <Topbar />
+            <Switch>
+              <route path="/dashboard" >
+                <Dashboard  />
+                </route>
+                <route path="/reports" >
+              <Report/>
+                </route>
+            </Switch>
+          </div>
+
+        </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
